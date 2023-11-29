@@ -24,7 +24,15 @@ tasks:
     cmds:
       - docker-compose down -v
 
-  start:
+  reset-db:
+    desc: "Reinitialize the database container (does not impact pgadmin)"
+    dir: "./postgres-anonymize"
+    cmds:
+      - docker compose stop postgres-anonymiser
+      - docker compose rm postgres-anonymiser --force --volumes
+      - docker compose up -d postgres-anonymiser
+
+  process:
     desc: "Clean up the database and anonymize all data"
     dir: "./postgres-anonymize"
     cmds:

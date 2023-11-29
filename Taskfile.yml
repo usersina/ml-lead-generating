@@ -1,0 +1,31 @@
+# https://taskfile.dev
+
+version: "3"
+
+silent: true
+
+tasks:
+  up:
+    desc: "Start the anonymization container"
+    dir: "./postgres-anonymize"
+    cmds:
+      - if [ ! -f ./init/ilg-data.sql ]; then echo "File ./postgres-anonymize/init/ilg-data.sql is confidential and cannot be provided."; exit 1; fi
+      - docker-compose up -d
+
+  down:
+    desc: "Stop the anonymization container"
+    dir: "./postgres-anonymize"
+    cmds:
+      - docker-compose down
+
+  delete:
+    desc: "WARNING: Stop the anonymization container and delete all data"
+    dir: "./postgres-anonymize"
+    cmds:
+      - docker-compose down -v
+
+  start:
+    desc: "Clean up the database and anonymize all data"
+    dir: "./postgres-anonymize"
+    cmds:
+      - ./start.sh

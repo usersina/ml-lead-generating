@@ -1,0 +1,4 @@
+init/*.sql
+!init/init_anon.sql
+
+out/*.sql

@@ -1,0 +1,73 @@
+version: '3'
+
+services:
+  # postgres:
+  #   image: postgres:13
+  #   ports:
+  #     - 5432:5432
+  #   networks:
+  #     - postgres-net
+  #   environment:
+  #     - POSTGRES_USER=ilg
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=ilg
+  #   volumes:
+  #     - postgres-vol:/var/lib/postgresql/data
+  #     - ./init/role.sh:/docker-entrypoint-initdb.d/role.sh
+  #     - ./init/ilg-dummy-data.sql:/docker-entrypoint-initdb.d/data.sql
+  #   healthcheck:
+  #     test: [ "CMD-SHELL", "pg_isready" ]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   logging:
+  #     options:
+  #       max-size: 10m
+  #       max-file: "3"
+
+  postgres-anonymiser:
+    image: registry.gitlab.com/dalibo/postgresql_anonymizer:stable
+    container_name: postgres-anonymiser
+    networks:
+      - postgres-net
+    environment:
+      - POSTGRES_USER=ilg
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./init/role.sh:/docker-entrypoint-initdb.d/role.sh
+      - ./init/ilg-data.sql:/docker-entrypoint-initdb.d/data.sql
+      - ./init/init_anon.sql:/docker-entrypoint-initdb.d/init_anon.sql
+      - ./scripts:/scripts
+    ports:
+      - '6432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+
+  pgadmin:
+    image: dpage/pgadmin4:7
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+    volumes:
+      - pgadmin-vol:/var/lib/pgadmin
+    networks:
+      - postgres-net
+    ports:
+      - 8080:80
+
+volumes:
+  postgres-vol:
+    driver: local
+  pgadmin-vol:
+    driver: local
+
+networks:
+  postgres-net:
+    driver: bridge

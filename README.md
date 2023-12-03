@@ -6,7 +6,7 @@ This repository demonstrates the full machine learning process of training a mod
 
 The dataset is a `.SQL` file extracted from a proprietary SaaS service.
 
-The objective of the SaaS platform is to build campaigns -using initial and follow-up messages- in hopes of increasing the conversion rate of leads through various other social networks (LinkedIn, Emails, etc...)
+The objective of the SaaS platform is to build campaigns -using initial and follow-up messages- in order to increase the conversion rate of leads through various other social networks (LinkedIn, Emails, etc...)
 
 ## Problem statement
 

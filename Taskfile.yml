@@ -32,8 +32,22 @@ tasks:
       - docker compose rm postgres-anonymiser --force --volumes
       - docker compose up -d postgres-anonymiser
 
-  process:
-    desc: "Clean up the database and anonymize all data"
+  clean:
+    desc: "Clean up all extra data from the database"
     dir: "./postgres-anonymize"
     cmds:
-      - ./start.sh
+      - docker exec postgres-anonymiser bash -c "psql -U ilg -d ilg -f /scripts/clean_up.sql"
+
+  anonymize:
+    desc: "Anonymize all relevant data in the database"
+    dir: "./postgres-anonymize"
+    cmds:
+      - docker exec postgres-anonymiser bash -c "psql -U ilg -d ilg -f /scripts/unique_fake_email.sql"
+      - docker exec postgres-anonymiser bash -c "psql -U ilg -d ilg -f /scripts/anonymise.sql"
+
+  export:
+    desc: "Export the anonymized data to an SQL file"
+    dir: "./postgres-anonymize"
+    cmds:
+      - rm -f ./out/ilg_output.sql
+      - docker exec postgres-anonymiser bash -c "pg_dump -U ilg -d ilg -n public" >./out/ilg_output.sql

@@ -32,26 +32,10 @@ Login information can checked from the compose file.
 
 ### 2. Testing the Anonymiser
 
-<!--
-- Exec to the running `postgres-anonymiser` container
-
-```bash
-docker exec -it postgres-anonymiser bash
-```
-
-- Connect to the local database inside the `postgres-anonymiser` container
-
-```bash
-export PGPASSWORD=password
-psql --host=localhost --port=5432 --user=ilg
-``` -->
-
 - Connect to the local database in the `postgres-anonymiser` container
 
 ```bash
 docker exec -it postgres-anonymiser bash -c "psql -U ilg -d ilg"
-# OR
-docker compose exec postgres-anonymiser bash -c "psql -U ilg -d ilg"
 ```
 
 - Verify that the anonymiser is working

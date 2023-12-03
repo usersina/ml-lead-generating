@@ -58,3 +58,4 @@ tasks:
     cmds:
       - rm -f ./out/ilg_output.csv
       - docker exec postgres-anonymiser bash -c "/scripts/export.sh ilg ilg public"
+      - mv ./out/*.csv ../dataset/actual

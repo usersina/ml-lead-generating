@@ -38,6 +38,7 @@ services:
       - ./init/ilg-data.sql:/docker-entrypoint-initdb.d/data.sql
       - ./init/init_anon.sql:/docker-entrypoint-initdb.d/init_anon.sql
       - ./scripts:/scripts
+      - ./out:/out
     ports:
       - '6432:5432'
     healthcheck:

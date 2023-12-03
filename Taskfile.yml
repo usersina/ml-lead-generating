@@ -45,9 +45,16 @@ tasks:
       - docker exec postgres-anonymiser bash -c "psql -U ilg -d ilg -f /scripts/unique_fake_email.sql"
       - docker exec postgres-anonymiser bash -c "psql -U ilg -d ilg -f /scripts/anonymise.sql"
 
-  export:
+  dump:
     desc: "Export the anonymized data to an SQL file"
     dir: "./postgres-anonymize"
     cmds:
       - rm -f ./out/ilg_output.sql
       - docker exec postgres-anonymiser bash -c "pg_dump -U ilg -d ilg -n public" >./out/ilg_output.sql
+
+  export:
+    desc: "Export the anonymized data to a CSV file"
+    dir: "./postgres-anonymize"
+    cmds:
+      - rm -f ./out/ilg_output.csv
+      - docker exec postgres-anonymiser bash -c "/scripts/export.sh ilg ilg public"

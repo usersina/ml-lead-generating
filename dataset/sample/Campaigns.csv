@@ -1,0 +1,2 @@
+id,name,type,status,numOfLeads,numOfInvitesSent,numOfInvitesAccepted,numOfRepliesReceived,userId,useFirstName,deleted,lastScheduledToScrapeAt,minimumInvites,maximumInvites,firstFollowUpsSent,secondFollowUpsSent,thirdFollowUpsSent,fourthFollowUpsSent,fifthFollowUpsSent,sixthFollowUpsSent,invitesWithdrawn,useScraperAccounts,createdAt,updatedAt
+1,Cannon-Olson Owens-Barker,OutreachSalesNav,ACTIVE,0,0,0,0,1,t,f,,10,15,0,0,0,0,0,0,0,t,2023-10-19 10:31:45.096+00,2023-10-19 10:31:45.096+00

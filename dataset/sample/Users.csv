@@ -1,0 +1,3 @@
+id,companyName,email,role,userBoughtCredit,userUsedCredit,createdAt,updatedAt
+1,"Randolph, Barnes and Quinn",donnascott@yahoo.com,SuperAdmin,1000,0,2023-10-19 10:31:34.764+00,2023-10-19 10:31:34.764+00
+2,"Perkins, Adams and Walters",mitchellbrian@hotmail.com,Admin,1000,0,2023-10-19 10:31:37.114+00,2023-10-19 10:31:37.114+00

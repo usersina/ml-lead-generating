@@ -27,21 +27,3 @@ Configure your python environment of choice, then install the necessary dependen
 ```bash
 pip install -r requirements.txt
 ```
-
-<!-- ## ML Algorithm
-
-This is an unsupervised learning problematic.
-It can either be:
-
-- [ ] A recommendation problem
-
-  - [ ] Association rules
-  - [ ] Collaborative filtering
-
-OR (if the above does not deliver good results)
-
-- [ ] A Text mining/Natural Language Processing problem
-
----
-
-- Watson studio (free trial) -->

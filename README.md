@@ -38,6 +38,14 @@ Configure your python environment of choice, then install the necessary dependen
 pip install -r requirements.txt
 ```
 
+### 3. Using the web server
+
+You can directly check the most optimal messages to send with a lead by specifying their id in the `/recommend` endpoint as follows:
+
+```bash
+curl -X GET 'http://localhost:5000/recommend?leadId=39280'
+```
+
 ## Example use case
 
 This sections explains how the LinkedIn lead generation works in the context of dataframes.

@@ -59,3 +59,8 @@ tasks:
       - rm -f ./out/ilg_output.csv
       - docker exec postgres-anonymiser bash -c "/scripts/export.sh ilg ilg public"
       - mv ./out/*.csv ../dataset/actual
+
+  flask:dev:
+    desc: "Start the Flask development server"
+    cmds:
+      - flask --app run run --debug --host=0.0.0.0

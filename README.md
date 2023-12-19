@@ -38,7 +38,15 @@ Configure your python environment of choice, then install the necessary dependen
 pip install -r requirements.txt
 ```
 
-### 3. Using the web server
+### 3. Running the application
+
+A Flask application is provided to use the model, simply run the main run.py script.
+
+```bash
+python run.py
+```
+
+### 4. Using the application
 
 You can directly check the most optimal messages to send with a lead by specifying their id in the `/recommend` endpoint as follows:
 
